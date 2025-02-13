@@ -2,11 +2,11 @@
 Mean-Reverting Algorithm
 
 
-## Main goal for this project
+# Main goal for this project
 
 The main idea of this project is to succesfully code, deploy and backtest a *Mean-Reverting* algorithm. This algorithm, with help of some external neural networks and deep learning models will trade the reversion into the mean of two pairs, in this case NIKKEI and VIX.
 
-# Models used in the project
+## Models used in the project
 
 There will be a few machine learning and deep learning models implemented, to make sure we minimise our losses when trading:
 
@@ -19,7 +19,7 @@ There will be a few machine learning and deep learning models implemented, to ma
 - FINBERT model: FINBERT is a natural processing model that ranks by sentiment the different news and headlines.
 
 
-# Reasoning behind the trades of this project 
+## Reasoning behind the trades of this project 
 
 The reasoning of the trades taken by this algorithm will be the following:
 
