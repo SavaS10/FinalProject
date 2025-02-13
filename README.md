@@ -43,5 +43,5 @@ In terms of the exits:
 
 Only when a trade is entered we can exit it by the price of the *Spread* **Touching the mean** or by **Touching our stoploss**.
 
-The **The stoploss will be calculated with the standard diviations.
+The **The stoploss will be calculated with the standard diviations**.
             
