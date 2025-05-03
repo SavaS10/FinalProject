@@ -8,38 +8,35 @@ The main idea of this project is to succesfully code, deploy and backtest a *Mea
 
 ## Models used in the project
 
-There will be a few machine learning and deep learning models implemented, to make sure we minimise our losses when trading:
+There will be a few machine learning and deep learning models implemented, to make sure I minimise my losses when trading:
 
-- *OLS* model: This model will be used to create the fair *Spread* This spread will be the main time-serie traded by the algorithm.
+- *OLS* model: This model will be used to calculate the fair *Spread* This spread will be the main time-serie traded by the algorithm.
   
-- *ARIMA* model: The VAR model will be used to predict the *Spread*. Why I selected a VAR model is because I want the model to have in mind the relationships between the two asstes. What this VAR model allows me is to see how much of a change in one asset will impact the other.
+- *ARIMA* model: The ARIMA model will be used to predict the *Spread*. Why I selected a ARIMA model is due to the time-seire being univariate and its ability to caputre complex patterns in such data. What this ARIMA model allows me is to predict the value of the spread after crossing one of the thresholds and with this minimize my exposure to false signals.
   
-- *FINBERT* model: FINBERT is a natural processing model that ranks by sentiment the different news and headlines.
+- *FINBERT* model: FINBERT is a natural processing model that ranks by sentiment the different news and headlines. This model will be used in my algorithm to define and dinamically adjust the barriers for the mean-reversion.
 
 
-## Reasoning behind the trades of this project 
+## Reasoning behind the trades  
 
 The reasoning of the trades taken by this algorithm will be the following:
 
-**IF** the price of the *Spread* is **above or below** a barrier (depending on which one; Upper or Lowers ):
+Firstly, the thresholds will be defined by the **FINBERT** model depending on the *sentiment* score for that day,
 
-We check the prediction of the **VAR** model at **Xt** for the price at **X(t+1)**
+**IF** the price of the *Spread* is **above or below** a barrier (depending on which one: Upper or Lower ):
 
-**IF** the prediction of the **VAR** model is **Lower or higher** than the actual price at **Xt** (depending on which barrier it crossed) 
+We check the prediction of the **ARIMA** model at **Xt** for the price at **X(t+1)**
+
+**IF** the prediction of the **ARIMA** model is **Lower or higher** than the actual price at **Xt** (depending on which barrier it crossed) 
 
 We can then know that the price prediction of the model indicates there is going to be a reversion into the mean, allowing us identify a trade.
 
-**LASTLY** we check for the prediction of the **LSTM NN** 
-
-**IF** the prediction of the **LSTMnn** is long on the Nikkei and short on the VIX or viceversa (depending on which barrier it crossed)
-
-This can then tell us that all the models indicate that the price of the *Spread**  will revert to the mean:
 
 **GIVING US A TRADE**
 
 In terms of the exits:
 
-Only when a trade is entered we can exit it by the price of the *Spread* **Touching the mean** or by **Touching our stoploss**.
+The only way to exit a trade is with the *Spread* **reverting to the equilibrium**.
 
-The **The stoploss will be calculated with the standard diviations**.
+When a trade is in place, the model wont check for more entries. Only when the trade is exited the model will check for new possibilities.
             
