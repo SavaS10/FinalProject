@@ -4,7 +4,7 @@
 
 # Main goal for this project
 
-The main idea of this project is to succesfully code, deploy and backtest a *Mean-Reverting* algorithm. This algorithm, with help of some external neural networks and deep learning models will trade the reversion into the mean of two pairs, in this case NIKKEI and VIX.
+The main idea of this project is to succesfully code, deploy and backtest a *Mean-Reverting* algorithm. This algorithm, with help of some external forecasting and deep learning models will trade the reversion into the mean of two pairs, in this case NIKKEI and VIX.
 
 ## Models used in the project
 
